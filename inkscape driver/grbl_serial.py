@@ -2,7 +2,6 @@
 # Serial connection utilities for RAMPS
 
 import time, sys, string
-sys.path.insert(0,'/Library/Python/2.7/site-packages')
 import serial
 import inkex
 import gettext
