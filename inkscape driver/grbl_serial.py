@@ -1,7 +1,9 @@
 # grbl_serial.py
 # Serial connection utilities for RAMPS
 
-import serial, time, sys, string
+import time, sys, string
+sys.path.insert(0,'/Library/Python/2.7/site-packages')
+import serial
 import inkex
 import gettext
 import datetime
@@ -16,11 +18,11 @@ def findPort():
     if comports:
         comPortsList = list(comports())
         for port in comPortsList:
-            desc = port[1].lower()
+            desc = port[0].lower()
             isUsbSerial = "usb" in desc and "serial" in desc
             isArduino = "arduino" in desc 
             isCDC = "CDC" in desc 
-            if isUsbSerial or isArduino or isCDC:
+            if isUsbSerial or isArduino or isCDC or "linvor" in desc:
                 return port[0]
     return None
 
@@ -38,6 +40,8 @@ def testPort(comPort):
             serialPort.dtr = True
             serialPort.port = comPort
             serialPort.open()
+            if "linvor" in comPort:
+            	return serialPort
             time.sleep(2)
             while True:
                 strVersion = serialPort.readline()
