@@ -4,7 +4,7 @@ The 4xiDraw Extensions for Inkscape - Software to drive the 4xiDraw drawing mach
 
 More about 4xiDraw:  https://www.instructables.com/id/4xiDraw/
 
-Now I have added support for HC-06 Bluetooth module for Wireless plotting.
+Now support for HC-06 Bluetooth module for Wireless plotting has been added.
 
 ---------
 
